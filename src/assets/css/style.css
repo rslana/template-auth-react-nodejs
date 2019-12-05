@@ -1,0 +1,56 @@
+/* MENU HORIZONTAL */
+
+.menu-item {
+  margin: -14px -7px !important;
+  padding: 12px 15px !important;
+  border-radius: 6px;
+  transition: .3s !important;
+}
+
+.menu-link {
+  font-size: 1em;
+  cursor: pointer;
+  color: #014da3 !important;
+}
+
+.menu-link:hover {
+  background-color: #014da33a;
+}
+
+.menu-link-icone {
+  font-size: 1em;
+  cursor: pointer;
+  color: #014da3 !important;
+}
+
+.menu-link-drawer {
+  font-size: 11pt;
+  padding: 16px 18px 15px 18px;
+  display: block;
+  color: #014da3 !important;
+}
+
+.menu-link-drawer:hover {
+  background-color: #014da33a;
+}
+
+/* AUTH */
+
+@media (max-width: 767px) {
+  .card-auth {
+    margin-top: 5px !important;
+    margin-bottom: 40px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+/* DASHBOARD */
+@media (max-width: 767px) {
+  .corpo-dashboard {
+    width: 100%;
+    right: 0;
+    margin-left: 0px;
+    padding: 40px 15px;
+  }
+}
