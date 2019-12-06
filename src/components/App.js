@@ -16,6 +16,8 @@ import Logout from "./views/auth/Logout";
 import Dashboard from "./controllers/Dashboard";
 import Perfil from "./controllers/usuario/Perfil";
 import CadastrarIngrediente from "./views/ingrediente/CadastrarIngrediente";
+import Ingredientes from "./views/ingrediente/Ingredientes";
+import EditarIngrediente from "./views/ingrediente/EditarIngrediente";
 
 const App = ({ location }) => {
   return (
@@ -31,6 +33,8 @@ const App = ({ location }) => {
         <UserRoute location={location} path="/perfil" exact component={Perfil} />
 
         <UserRoute location={location} path="/ingrediente/cadastrar" exact component={CadastrarIngrediente} />
+        <UserRoute location={location} path="/ingredientes" exact component={Ingredientes} />
+        <UserRoute location={location} path="/ingrediente/editar/:id" exact component={EditarIngrediente} />
 
         <Route location={location} component={Erro404} />
       </Switch>

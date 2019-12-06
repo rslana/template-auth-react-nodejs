@@ -100,7 +100,7 @@ export default {
       api
         .put(`/ingrediente/${id}`, data)
         .then(res => res.data),
-    findByIdAndRemove: (id) =>
+    findByIdAndDelete: (id) =>
       api
         .delete(`/ingrediente/${id}`)
         .then(res => res.data)

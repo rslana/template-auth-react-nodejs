@@ -12,7 +12,7 @@ const ingrediente = (state = initState, action = {}) => {
     case 'FIND_INGREDIENTES_SUCCESS':
       return {
         ...initState,
-        ingredientes: action.dados.ingredientes,
+        ingredientes: action.dados.ingrediente,
         quantidade: action.dados.quantidade,
       };
     case 'CREATE_INGREDIENTE_SUCCESS':
@@ -40,6 +40,16 @@ const ingrediente = (state = initState, action = {}) => {
           if (ingrediente._id === action.ingrediente._id)
             return action.ingrediente;
           return ingrediente;
+        })
+      };
+    case 'DELETE_INGREDIENTE_SUCCESS':
+      console.log(action.ingrediente)
+      return {
+        ...initState,
+        ingrediente: action.ingrediente,
+        quantidade: state.quantidade,
+        ingredientes: state.ingredientes.filter(ingrediente => {
+          return (ingrediente._id !== action.ingrediente._id)
         })
       };
     case 'ADD_INGREDIENTE_ERROR':

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import MenuHorizontal from "../../layouts/MenuHorizontal";
@@ -19,6 +20,10 @@ class Dashboard extends Component {
         <MenuHorizontal />
         <Container style={{ marginTop: "30px" }}>
           <h2> Dashboard</h2>
+
+          <Link to="/ingredientes">Ingredientes</Link><br />
+          <Link to="/ingrediente/cadastrar">Cadastrar Ingrediente</Link>
+
         </Container>
       </div >
     );

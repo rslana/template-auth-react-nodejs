@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import MenuHorizontal from '../../layouts/MenuHorizontal';
-import { Form, Button, Container } from 'semantic-ui-react';
+import { Container, Button, Form } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { create } from "../../../actions/ingrediente";
+import { findById, findByIdAndUpdate } from "../../../actions/ingrediente";
 import * as FormValidator from "../../../utils/formValidator";
 
 class CadastrarIngrediente extends Component {
@@ -15,6 +15,12 @@ class CadastrarIngrediente extends Component {
     }
   }
 
+  componentDidMount = async () => {
+    this.setState({ loading: true });
+    await this.props.findById(this.props.match.params.id);
+    console.log(this.props.ingrediente)
+    this.setState({ ingrediente: { ...this.props.ingrediente }, loading: false })
+  }
   onChange = e => {
     this.setState({
       ingrediente: {
@@ -27,7 +33,7 @@ class CadastrarIngrediente extends Component {
   onSubmit = async (e) => {
     e.preventDefault();
     this.setState({ loading: true });
-    await this.props.create(this.state.ingrediente)
+    await this.props.findByIdAndUpdate(this.state.ingrediente._id, this.state.ingrediente)
     this.setState({
       loading: false,
       sucesso: FormValidator.objIsEmpty(this.props.errors),
@@ -41,7 +47,7 @@ class CadastrarIngrediente extends Component {
       <div>
         <MenuHorizontal />
         <Container style={{ marginTop: "30px" }}>
-          <h1>Cadastrar Ingrediente</h1>
+          <h1>Editar Ingrediente {this.props.ingrediente.produto}</h1>
           <Form onSubmit={this.onSubmit}>
             <Form.Field>
               <label>Produto</label>
@@ -52,7 +58,7 @@ class CadastrarIngrediente extends Component {
                 value={ingrediente.produto}
               />
             </Form.Field>
-            <Button type='submit'>Cadastrar</Button>
+            <Button type='submit'>Editar</Button>
           </Form>
         </Container>
       </div>
@@ -68,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return (
-    bindActionCreators({ create }, dispatch)
+    bindActionCreators({ findById, findByIdAndUpdate }, dispatch)
   )
 }
 

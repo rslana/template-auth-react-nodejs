@@ -21,6 +21,11 @@ const findByIdAndUpdateSuccess = ingrediente => ({
   ingrediente
 })
 
+const findByIdAndDeleteSuccess = ingrediente => ({
+  type: 'DELETE_INGREDIENTE_SUCCESS',
+  ingrediente
+})
+
 const addError = errors => ({
   type: 'ADD_INGREDIENTE_ERROR',
   errors
@@ -53,6 +58,14 @@ export const find = () => async dispatch => {
 export const findByIdAndUpdate = (id, data) => async dispatch => {
   return api.ingrediente.findByIdAndUpdate(id, data).then(data => {
     return dispatch(findByIdAndUpdateSuccess(data));
+  }).catch(error => {
+    dispatch(addError(errorHandler.getError(error)));
+  })
+}
+
+export const findByIdAndDelete = (id) => async dispatch => {
+  return api.ingrediente.findByIdAndDelete(id).then(data => {
+    return dispatch(findByIdAndDeleteSuccess(data));
   }).catch(error => {
     dispatch(addError(errorHandler.getError(error)));
   })
