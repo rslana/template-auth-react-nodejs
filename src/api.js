@@ -80,4 +80,30 @@ export default {
         .put(`/usuario/reenviar_email_confirmacao_cadastro`)
         .then(res => res.data)
   },
+  ingrediente: {
+    create: data =>
+      api
+        .post(`/ingrediente`, data)
+        .then(res => res.data)
+    ,
+    find: () =>
+      api
+        .get(`/ingrediente`)
+        .then(res => res.data)
+    ,
+    findById: (id) =>
+      api
+        .get(`/ingrediente/${id}`)
+        .then(res => res.data)
+    ,
+    findByIdAndUpdate: (id, data) =>
+      api
+        .put(`/ingrediente/${id}`, data)
+        .then(res => res.data),
+    findByIdAndRemove: (id) =>
+      api
+        .delete(`/ingrediente/${id}`)
+        .then(res => res.data)
+    ,
+  }
 };

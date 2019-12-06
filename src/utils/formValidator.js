@@ -118,3 +118,5 @@ export const getErro = erro => {
 
   return "Erro desconhecido"
 }
+
+export const objIsEmpty = (obj) => obj && !Object.keys(obj).length

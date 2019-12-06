@@ -15,6 +15,7 @@ import Logout from "./views/auth/Logout";
 //Usuario
 import Dashboard from "./controllers/Dashboard";
 import Perfil from "./controllers/usuario/Perfil";
+import CadastrarIngrediente from "./views/ingrediente/CadastrarIngrediente";
 
 const App = ({ location }) => {
   return (
@@ -28,6 +29,8 @@ const App = ({ location }) => {
         <GuestRoute location={location} path="/recuperar-senha/:token" exact component={RecuperacaoSenha} />
         <UserRoute location={location} path="/logout" exact component={Logout} />
         <UserRoute location={location} path="/perfil" exact component={Perfil} />
+
+        <UserRoute location={location} path="/ingrediente/cadastrar" exact component={CadastrarIngrediente} />
 
         <Route location={location} component={Erro404} />
       </Switch>
